@@ -42,7 +42,7 @@ feat: adding new features
 fix: fix a bug
 docs: document modification
 style: Style-related features (if code formatting, missing semicolons, no changes in code itself)
-factor: code refactoring
+refactor: code refactoring
 test: Add test code
 chore: Modify build job, modify package manager (ex. modify gitignore)
 ```
