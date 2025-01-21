@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Commit Convetion
+
+```
+feat: adding new features
+fix: fix a bug
+docs: document modification
+style: Style-related features (if code formatting, missing semicolons, no changes in code itself)
+factor: code refactoring
+test: Add test code
+chore: Modify build job, modify package manager (ex. modify gitignore)
+```
