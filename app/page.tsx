@@ -1,13 +1,11 @@
-import { Table } from "@/components/ui/table";
-import Image from "next/image";
+import Posts from "./posts/page";
+
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center p-8 pb-20 gap-16 sm:p-20">
-
-      <Table>
-
-      </Table>
+    <div className="flex flex-col items-center justify-center p-8 gap-16 sm:p-20">
+      {/* 메인 페이지를 수정할 수 있음에 Posts 컴포넌트를 사용하여 유지보수 대비*/}
+      <Posts />
     </div>
   );
 }
