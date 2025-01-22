@@ -13,7 +13,7 @@ const Header = () => {
       <div className="font-bold lg:inline-block cursor-pointer" onClick={handleHome}>노종열 사전 과제</div>
       <div>
         <>검색창</>
-        <ModeTogle />
+        {/* <ModeTogle /> */}
       </div>
     </div>
   )

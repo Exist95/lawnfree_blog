@@ -18,15 +18,17 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          </ThemeProvider> */}
+        <Header />
+        <div className="container">
           {children}
-        </ThemeProvider>
+        </div>
       </body>
     </html>
   );
