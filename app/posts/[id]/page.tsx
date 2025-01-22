@@ -1,10 +1,10 @@
 import React from 'react'
 import DetailClient from './client'
 
-const PostsDetail = () => {
+const DetailPosts = () => {
   return (
     <DetailClient />
   )
 }
 
-export default PostsDetail
+export default DetailPosts

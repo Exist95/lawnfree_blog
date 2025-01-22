@@ -15,7 +15,7 @@ const PostCard = ({ post }: { post: Post }) => {
       <CardHeader>
         <div className='flex justify-between items-center'>
           <CardTitle>{post.title}</CardTitle>
-          <DetailPostButton />
+          <DetailPostButton postId={post.id} />
         </div>
         <div className='flex items-center gap-2'>
           <CardDescription>{post.author}</CardDescription>
@@ -31,8 +31,6 @@ const PostCard = ({ post }: { post: Post }) => {
             : <Button onClick={() => updatePostLikes(post.id)}><ThumbsUp />Like</Button>
           }
         </div>
-
-
       </CardContent>
     </Card>
   )
