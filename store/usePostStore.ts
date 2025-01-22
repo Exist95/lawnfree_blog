@@ -8,7 +8,7 @@ export const usePostStore = create<PostStore>((set) => ({
 
   addPost: (post) => {
     set((state) => {
-      const updatedPosts = [...state.posts, post];
+      const updatedPosts = [post, ...state.posts];
       localStorage.setItem('posts', JSON.stringify(updatedPosts)); // 로컬 스토리지에 저장
       return { posts: updatedPosts };
     });

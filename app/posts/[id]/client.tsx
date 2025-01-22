@@ -33,9 +33,9 @@ const DetailClient = () => {
   }
 
   return (
-    <div className='flex justify-center items-center mt-4 w-full'>
+    <>
       <PostCard post={post} /> {/* PostCard 컴포넌트 사용 */}
-    </div>
+    </>
   )
 }
 

@@ -1,14 +1,14 @@
 'use client'
 import React, { useEffect } from 'react'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
-import { Input } from '../ui/input'
-import { Button } from '../ui/button'
-import { Textarea } from '../ui/textarea'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../../ui/form'
+import { Input } from '../../ui/input'
+import { Button } from '../../ui/button'
+import { Textarea } from '../../ui/textarea'
 import usePostForm, { PostFormValues } from '@/hooks/usePostForm'
 import { usePostStore } from '@/store/usePostStore'
 import { useRouter } from 'next/navigation'
 
-const PostForm = () => {
+const AddPostForm = () => {
   const form = usePostForm();
   const { addPost, loadPosts } = usePostStore();
   const route = useRouter();
@@ -23,7 +23,7 @@ const PostForm = () => {
       title: data.title,
       content: data.content,
       author: data.author,
-      date: new Date().toISOString(),
+      date: new Date(new Date().getTime() + (9 * 60 * 60 * 1000)).toISOString(), // 한국 시간으로 설정
       likes: false,
     };
 
@@ -87,4 +87,4 @@ const PostForm = () => {
   )
 }
 
-export default PostForm
+export default AddPostForm

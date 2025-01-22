@@ -1,14 +1,21 @@
+'use client'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { usePostAction } from '@/hooks/usePostAction'
 import { EllipsisVertical } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
 const DetailPostButton = ({ postId }: { postId: number }) => {
   const route = useRouter();
+  const { removePost } = usePostAction();
 
   const handleEdit = () => {
     route.push(`/posts/edit/${postId}`);
+  }
+
+  const handleDelete = () => {
+    removePost(postId)
   }
 
   return (
@@ -24,7 +31,7 @@ const DetailPostButton = ({ postId }: { postId: number }) => {
           <DropdownMenuItem onClick={handleEdit}>
             Edit
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => { }}>
+          <DropdownMenuItem onClick={handleDelete}>
             Delete
           </DropdownMenuItem>
         </DropdownMenuContent>

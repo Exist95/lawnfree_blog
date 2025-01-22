@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/x-common/header";
-import { ThemeProvider } from "@/components/x-common/theme-provider";
+import Header from "@/components/common/header";
 
 export const metadata: Metadata = {
   title: "블로그 웹 애플리케이션 개발",
@@ -18,13 +17,6 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        {/* <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          </ThemeProvider> */}
         <Header />
         <div className="container">
           {children}

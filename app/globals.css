@@ -8,7 +8,7 @@ body {
 
 .container {
   max-width: 800px;
-  margin: 0 auto; /* 중앙 정렬 */
+  margin: 20px auto; /* 중앙 정렬 */
   padding: 0px; /* 양쪽 여백 (옵션) */
 }
 

@@ -5,13 +5,13 @@ import { ThumbsUp } from 'lucide-react'
 import { formatDate } from '@/lib/format'
 import { usePostAction } from '@/hooks/usePostAction'
 import { Button } from '../ui/button'
-import DetailPostButton from './button/detail-post'
+import DetailPostButton from './button/detail-button'
 
 const PostCard = ({ post }: { post: Post }) => {
   const { updatePostLikes } = usePostAction();
 
   return (
-    <Card className='w-full'>
+    <Card >
       <CardHeader>
         <div className='flex justify-between items-center'>
           <CardTitle>{post.title}</CardTitle>
