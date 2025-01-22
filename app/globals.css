@@ -6,6 +6,32 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.container {
+  max-width: 800px;
+  margin: 0 auto; /* 중앙 정렬 */
+  padding: 0px; /* 양쪽 여백 (옵션) */
+}
+
+@media (max-width: 599px) {
+  .container {
+    padding: 0 16px; /* 모바일에서 양쪽 padding */
+  }
+}
+
+/* 태블릿 화면 */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .container {
+    padding: 0 32px; /* 태블릿에서 양쪽 padding */
+  }
+}
+
+/* PC 화면 */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 48px; /* PC에서 양쪽 padding */
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
