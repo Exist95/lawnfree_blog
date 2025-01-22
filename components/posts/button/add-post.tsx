@@ -1,12 +1,10 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { usePostAction } from '@/hooks/usePostAction'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const PostButton = () => {
-  const { posts } = usePostAction();
+const AddPostButton = () => {
   const route = useRouter();
 
   const handleAddPost = () => {
@@ -18,4 +16,4 @@ const PostButton = () => {
   )
 }
 
-export default PostButton
+export default AddPostButton
