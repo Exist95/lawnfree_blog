@@ -1,8 +1,9 @@
 import React from 'react'
+import EditClient from './client'
 
 const EditPosts = () => {
   return (
-    <div>page</div>
+    <EditClient />
   )
 }
 
