@@ -1,18 +1,20 @@
-export interface Post {
+export interface IPost {
   id: number;
   title: string;
-  content: string;
+  contents: string;
   author: string;
   date: string;
   likes: boolean;
+  categories: string;
+  tags?: string[];
 }
 
-export interface PostStore {
-  posts: Post[];
-  addPost: (post: Post) => void;
+export interface IPostStore {
+  posts: IPost[];
+  addPost: (post: IPost) => void;
   removePost: (id: number) => void;
-  updatePost: (id: number, post: Post) => void;
+  updatePost: (id: number, post: IPost) => void;
   updatePostLikes: (id: number) => void;
   loadPosts: () => void;
-  setPosts: (posts: Post[]) => void; // 게시글 목록 설정
+  setPosts: (posts: IPost[]) => void; // 게시글 목록 설정
 }

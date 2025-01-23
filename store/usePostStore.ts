@@ -1,9 +1,9 @@
-import { PostStore } from "@/types/post";
+import { IPostStore } from "@/types/post";
 import { create } from "zustand";
 
 
 
-export const usePostStore = create<PostStore>((set) => ({
+export const usePostStore = create<IPostStore>((set) => ({
   posts: [],
 
   addPost: (post) => {

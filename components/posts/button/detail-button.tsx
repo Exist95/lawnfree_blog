@@ -1,22 +1,35 @@
 'use client'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { toast } from '@/hooks/use-toast'
 import { usePostAction } from '@/hooks/usePostAction'
 import { EllipsisVertical } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const DetailPostButton = ({ postId }: { postId: number }) => {
+const DetailPostButton = ({ postId, }: { postId: number }) => {
   const route = useRouter();
   const { removePost } = usePostAction();
 
   const handleEdit = () => {
-    route.push(`/posts/edit/${postId}`);
+    route.push(`/posts/edit//${postId}`);
   }
 
-  const handleDelete = () => {
-    removePost(postId)
-  }
+  const handleDelete = async () => {
+    try {
+      await removePost(postId);
+      toast({
+        description: "Your post has been deleted.",
+      });
+
+    } catch (error) {
+      toast({
+        description: "Failed to delete the post.",
+      });
+    }
+
+    route.push('/');
+  };
 
   return (
     <div>
@@ -26,7 +39,6 @@ const DetailPostButton = ({ postId }: { postId: number }) => {
             <EllipsisVertical />
           </Button>
         </DropdownMenuTrigger>
-        {/* 직관을 위한 아이콘 미사용 */}
         <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={handleEdit}>
             Edit
