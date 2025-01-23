@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/common/header";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "블로그 웹 애플리케이션 개발",
@@ -21,6 +22,7 @@ export default function RootLayout({
         <div className="container">
           {children}
         </div>
+        <Toaster />
       </body>
     </html>
   );
