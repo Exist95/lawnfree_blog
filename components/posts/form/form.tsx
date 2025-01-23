@@ -10,6 +10,7 @@ import { useRouter, useParams } from 'next/navigation';
 import { useToast } from '@/hooks/use-toast';
 import FormInput from './input';
 
+
 const PostForm = () => {
   const { id } = useParams(); // URL에서 ID 가져오기
   const [post, setPost] = useState<PostFormValues | null>(null); // 게시글 상태
@@ -38,6 +39,7 @@ const PostForm = () => {
       form.setValue('contents', post.contents);
       form.setValue('author', post.author);
       form.setValue('categories', post.categories);
+      form.setValue('tags', post.tags);
     }
   }, [post, form]);
 
@@ -56,6 +58,7 @@ const PostForm = () => {
         date: post?.date || new Date(new Date().getTime() + (9 * 60 * 60 * 1000)).toISOString(),
         likes: post?.likes || false,
         categories: data.categories,
+        tags: data.tags || '',
       };
 
       updatePost(Number(id), updatedPost);
@@ -73,6 +76,7 @@ const PostForm = () => {
         date: new Date(new Date().getTime() + (9 * 60 * 60 * 1000)).toISOString(), // 한국 시간으로 설정
         likes: false,
         categories: data.categories,
+        tags: data.tags || '',
       };
 
       addPost(newPost); // 게시글 추가
@@ -98,6 +102,8 @@ const PostForm = () => {
           <FormInput control={form.control} label={'title'} />
           <FormInput control={form.control} label={'author'} />
           <FormInput control={form.control} label={'contents'} />
+          <FormInput control={form.control} label={'tags'} />
+
 
           <div className='flex justify-between items-center w-full gap-2'>
             <Button type="submit" className="w-full mt-4">
