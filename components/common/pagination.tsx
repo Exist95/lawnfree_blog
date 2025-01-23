@@ -1,39 +1,49 @@
 'use client'
 import React from 'react'
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '../ui/pagination'
-import { usePostAction } from '@/hooks/usePostAction';
+import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '../ui/pagination'
+import { IPaginationProps } from '@/types/pagination'
 
-const Pagenation = () => {
-  const { posts, loadPosts } = usePostAction();
-
-  console.log(posts)
+const Paginations = ({ currentPage, totalPages, onPageChange }: IPaginationProps) => {
 
   return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#" />
+          <PaginationPrevious
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              if (currentPage > 1) {
+                onPageChange(currentPage - 1);
+              }
+            }}
+          />
         </PaginationItem>
+        {Array.from({ length: totalPages }, (_, index) => (
+          <PaginationItem key={index}>
+            <PaginationLink
+              href="#"
+              onClick={() => onPageChange(index + 1)}
+              isActive={currentPage === index + 1}
+            >
+              {index + 1}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
         <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#" isActive>
-            2
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationNext href="#" />
+          <PaginationNext
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              if (currentPage < totalPages) {
+                onPageChange(currentPage + 1);
+              }
+            }}
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
   )
 }
 
-export default Pagenation
+export default Paginations
