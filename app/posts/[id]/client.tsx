@@ -1,15 +1,15 @@
 'use client';
 
-import PostCard from '@/components/posts/card';
+import PostDetail from '@/components/posts/detail';
 import { usePostAction } from '@/hooks/usePostAction';
-import { Post } from '@/types/post';
+import { IPost } from '@/types/post';
 import { useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 
 const DetailClient = () => {
   const { id } = useParams<{ id: string }>(); // 파라미터에서 가져온느 것임으로 string 타입
   const { posts, setPosts } = usePostAction(); // 게시글 데이터 가져오기
-  const [post, setPost] = useState<Post | null>(null); // 선택한 게시글 상태
+  const [post, setPost] = useState<IPost | null>(null); // 선택한 게시글 상태
 
   useEffect(() => {
     // 세부페이지에서 새로고침 했을 때, 게시글 목록 리스트를 불러오지 못해서 SetPosts를 사용하여 게시글 목록을 설정
@@ -33,9 +33,9 @@ const DetailClient = () => {
   }
 
   return (
-    <>
-      <PostCard post={post} /> {/* PostCard 컴포넌트 사용 */}
-    </>
+
+    <PostDetail post={post} />
+
   )
 }
 

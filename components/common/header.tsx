@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <header className='flex px-2 border-2 border-#e5e7eb h-14 items-center justify-between'>
-      <div className="font-bold lg:inline-block cursor-pointer" onClick={handleHome}>노종열 사전 과제</div>
+      <div className="font-bold lg:inline-block cursor-pointer" onClick={handleHome}>Lawnfree Blog</div>
       <div className='flex gap-2'>
         <Button variant='outline' size="icon">
           <Link href={'https://github.com/Exist95/lawnfree_blog'}>
