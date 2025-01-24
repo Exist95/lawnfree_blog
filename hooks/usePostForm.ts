@@ -8,14 +8,20 @@ import { formatDate } from '@/lib/format';
 
 export type PostFormValues = z.infer<typeof postSchema>
 
+export const MAX_TITLE_LENGTH = 20
+export const MAX_CONTENT_LENGTH = 200
+export const MAX_WRITER_LENGTH = 5
+export const MAX_TAG_LENGTH = 10
+
 const postSchema = z.object({
-  title: z.string().min(1, { message: 'The title is required.' }).max(20, { message: 'The title must be no more than 20 characters long.' }),
-  contents: z.string().min(1, { message: 'The content is required.' }).max(200, { message: 'The content must be no more than 200 characters.' }),
-  writer: z.string().min(1, { message: 'The writer is required.' }).max(5, { message: 'The writer must be no more than 5 characters.' }),
+  title: z.string().min(1, { message: 'The title is required.' }).max(MAX_TITLE_LENGTH, { message: `The title must be no more than ${MAX_TITLE_LENGTH} characters long.` }),
+  contents: z.string().min(1, { message: 'The content is required.' }).max(MAX_CONTENT_LENGTH, { message: `The content must be no more than ${MAX_CONTENT_LENGTH} characters.` }),
+  writer: z.string().min(1, { message: 'The writer is required.' }).max(MAX_WRITER_LENGTH, { message: `The writer must be no more than ${MAX_WRITER_LENGTH} characters.` }),
+  tags: z.string().max(MAX_TAG_LENGTH, { message: `Tag must be no more than ${MAX_TAG_LENGTH} characters long.` }).optional(),
   date: z.string().optional(),
   likes: z.boolean().optional(),
   categories: z.string().min(1, { message: 'The category is required.' }),
-  tags: z.string().max(10, { message: 'Tag must be no more than 10 characters long.' }).optional(),
+
 });
 
 const usePostForm = (id?: string, post?: PostFormValues | null) => {

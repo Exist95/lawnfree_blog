@@ -1,6 +1,9 @@
 import React from 'react'
 import { Input } from '../ui/input'
-import { ISearchBarProps } from '@/types/search-bar'
+export interface ISearchBarProps {
+  search: string;
+  setSearch: (search: string) => void;
+}
 
 const SearchBar = ({ search, setSearch }: ISearchBarProps) => {
   return (

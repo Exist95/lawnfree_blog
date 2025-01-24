@@ -3,9 +3,14 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/comp
 import { Input } from '@/components/ui/input'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Textarea } from '@/components/ui/textarea';
-import { IFormInputProps } from '@/types/form';
+import { MAX_CONTENT_LENGTH } from '@/hooks/usePostForm';
 
-
+export interface IFormInputProps {
+  control: any;
+  label: string;
+  type?: string;
+  options?: string[]; //드롭다운 옵션
+}
 
 const FormInput = ({ control, label, type = 'text', options }: IFormInputProps) => {
   const placeholder = `Please enter the ${label}`;
@@ -37,10 +42,18 @@ const FormInput = ({ control, label, type = 'text', options }: IFormInputProps) 
               </DropdownMenu>
             ) : (
               label === 'contents'
-                ? <Textarea
-                  className='min-h-[200px]'
-                  placeholder={placeholder}
-                  {...field} />
+                ? <div>
+                  <Textarea
+                    className="min-h-[200px]"
+                    placeholder={placeholder}
+                    {...field}
+                  />
+                  {/* 글자 수 표시 */}
+                  <div className="text-right text-sm text-gray-500 mt-1">
+                    {field.value.length}/{MAX_CONTENT_LENGTH}
+                  </div>
+                </div>
+
                 : <Input
                   type={type}
                   placeholder={placeholder}

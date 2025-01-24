@@ -1,6 +1,12 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { ISelectProps } from '@/types/select'
 import React from 'react'
+
+export interface ISelectProps {
+  placeholder: string;
+  value: string | undefined;
+  onValueChange: (value: string) => void;
+  options: string[];
+}
 
 const PostSelect = ({ placeholder, value, onValueChange, options }: ISelectProps) => {
   return (

@@ -1,7 +1,11 @@
 'use client'
 import React from 'react'
 import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '../ui/pagination'
-import { IPaginationProps } from '@/types/pagination'
+export interface IPaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
 
 const Paginations = ({ currentPage, totalPages, onPageChange }: IPaginationProps) => {
 
