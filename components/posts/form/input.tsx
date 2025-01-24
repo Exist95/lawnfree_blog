@@ -3,17 +3,12 @@ import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/comp
 import { Input } from '@/components/ui/input'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Textarea } from '@/components/ui/textarea';
+import { IFormInputProps } from '@/types/form';
 
-interface IFormInputProps {
-  control: any;
-  label: string;
-  type?: string;
-  //드롭다운에서 선택할 옵션
-  options?: string[];
-}
+
 
 const FormInput = ({ control, label, type = 'text', options }: IFormInputProps) => {
-  const dynamicPlaceholder = `Please enter ${label === 'categories' ? 'a' : 'the'} ${label}`;
+  const placeholder = `Please enter the ${label}`;
 
   return (
     <FormField
@@ -23,11 +18,10 @@ const FormInput = ({ control, label, type = 'text', options }: IFormInputProps) 
         <FormItem className="w-full">
           <FormLabel>{label.toUpperCase()}</FormLabel>
           <FormControl>
-
             {options ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Input placeholder={dynamicPlaceholder} value={field.value} readOnly className="w-full text-left cursor-pointer" />
+                  <Input value={field.value} readOnly className="w-full text-left cursor-pointer" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start"
                   className="w-full">
@@ -45,11 +39,11 @@ const FormInput = ({ control, label, type = 'text', options }: IFormInputProps) 
               label === 'contents'
                 ? <Textarea
                   className='min-h-[200px]'
-                  placeholder={dynamicPlaceholder}
+                  placeholder={placeholder}
                   {...field} />
                 : <Input
                   type={type}
-                  placeholder={dynamicPlaceholder}
+                  placeholder={placeholder}
                   {...field} />
             )}
           </FormControl>

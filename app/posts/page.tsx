@@ -1,6 +1,5 @@
-import SearchBar from '@/components/common/search-bar'
 import AddPostButton from '@/components/posts/button/add-button'
-import PostTable from '@/components/posts/table'
+import PostTable from '@/components/posts/table/table'
 import React from 'react'
 
 const Posts = () => {
