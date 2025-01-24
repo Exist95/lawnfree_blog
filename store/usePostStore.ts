@@ -1,4 +1,4 @@
-import { IPostStore } from "@/types/post";
+import { IPost, IPostStore } from "@/types/post";
 import { create } from "zustand";
 
 
@@ -6,54 +6,81 @@ import { create } from "zustand";
 export const usePostStore = create<IPostStore>((set) => ({
   posts: [],
 
-  addPost: (post) => {
+  // 게시글 추가
+  addPost: (post: IPost) => {
     set((state) => {
-      const updatedPosts = [post, ...state.posts];
-      localStorage.setItem('posts', JSON.stringify(updatedPosts)); // 로컬 스토리지에 저장
-      return { posts: updatedPosts };
+      const addedPosts = [post, ...state.posts];
+      try {
+        localStorage.setItem('posts', JSON.stringify(addedPosts));
+      } catch (error) {
+        console.error("Failed to added posts", error);
+      }
+      return { posts: addedPosts };
     });
   },
 
   // 게시글 수정
-  updatePost: (id, updatedPost) =>
+  updatePost: (id: number, post: IPost) => {
     set((state) => {
-      const updatedPosts = state.posts.map((post) =>
-        post.id === id ? { ...post, ...updatedPost } : post
+      const updatedPosts = state.posts.map((item) =>
+        item.id === id ? { ...item, ...post } : item
       );
-      localStorage.setItem('posts', JSON.stringify(updatedPosts)); // 로컬 스토리지에 저장
+      try {
+        localStorage.setItem('posts', JSON.stringify(updatedPosts));
+      } catch (error) {
+        console.error("Failed to updated posts", error);
+      }
       return { posts: updatedPosts };
-    }),
+    });
+  },
 
   // 게시글 삭제
   removePost: (id) =>
     set((state) => {
-      const updatedPosts = state.posts.filter((post) => post.id !== id);
-      localStorage.setItem('posts', JSON.stringify(updatedPosts)); // 로컬 스토리지에 저장
-      return { posts: updatedPosts };
+      const removedPosts = state.posts.filter((post) => post.id !== id);
+      try {
+        localStorage.setItem('posts', JSON.stringify(removedPosts));
+      } catch (error) {
+        console.error("Failed to removed posts", error);
+      }
+      return { posts: removedPosts };
     }),
 
 
   // 게시글 좋아요
   updatePostLikes: (id) =>
     set((state) => {
-      const updatedPosts = state.posts.map((post) =>
-        post.id === id ? { ...post, likes: !post.likes } : post // likes 상태 토글
+      const likedPosts = state.posts.map((post) =>
+        post.id === id ? { ...post, likes: !post.likes } : post
       );
-      localStorage.setItem('posts', JSON.stringify(updatedPosts)); // 로컬 스토리지에 저장
-      return { posts: updatedPosts };
+      try {
+        localStorage.setItem('posts', JSON.stringify(likedPosts));
+      } catch (error) {
+        console.error("Failed to liked posts", error);
+      }
+      return { posts: likedPosts };
     }),
 
   // 로컬 스토리지에서 게시글 불러오기
   loadPosts: () => {
-    const storedPosts = localStorage.getItem('posts');
-    if (storedPosts) {
-      set({ posts: JSON.parse(storedPosts) });
+    try {
+      const storedPosts = localStorage.getItem('posts');
+      if (storedPosts) {
+        set({ posts: JSON.parse(storedPosts) });
+      }
+    } catch (error) {
+      console.error("Failed to load posts", error);
     }
   },
 
+  // 로컬 스토리지에서 초기 데이터 가져오기
   setPosts: (newPosts) => {
     set(() => {
-      localStorage.setItem("posts", JSON.stringify(newPosts));
+      try {
+        localStorage.setItem("posts", JSON.stringify(newPosts));
+      } catch (error) {
+        console.error("Failed to setPosts", error);
+      }
       return { posts: newPosts };
     });
   },

@@ -2,11 +2,11 @@ export interface IPost {
   id: number;
   title: string;
   contents: string;
-  author: string;
+  writer: string;
   date: string;
   likes: boolean;
   categories: string;
-  tags?: string[];
+  tags?: string;
 }
 
 export interface IPostStore {
