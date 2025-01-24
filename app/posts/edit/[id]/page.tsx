@@ -1,9 +1,9 @@
 import React from 'react'
-import EditClient from './client'
+import PostForm from '@/components/posts/form/form'
 
 const EditPosts = () => {
   return (
-    <EditClient />
+    <PostForm />
   )
 }
 

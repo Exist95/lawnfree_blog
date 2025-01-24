@@ -4,7 +4,7 @@ import { ISearchBarProps } from '@/types/search-bar'
 
 const SearchBar = ({ search, setSearch }: ISearchBarProps) => {
   return (
-    <div className={`flex items-center gap-2`}>
+    <div className={`flex items-center w-full gap-2`}>
       <Input placeholder='Search post...' value={search} onChange={(e) => setSearch(e.target.value)} />
     </div>
   )
