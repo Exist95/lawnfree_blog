@@ -4,9 +4,10 @@ import { Input } from '@/components/ui/input'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Textarea } from '@/components/ui/textarea';
 import { MAX_CONTENT_LENGTH } from '@/hooks/usePostForm';
+import { Control } from 'react-hook-form';
 
 export interface IFormInputProps {
-  control: any;
+  control: Control<any>
   label: string;
   type?: string;
   options?: string[]; //드롭다운 옵션
