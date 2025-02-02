@@ -19,13 +19,13 @@ const DetailPosts = () => {
     }
   }, [posts, setPosts]);
 
-  // useEffect(() => {
-  //   if (id) {
-  //     const postId = Number(id);
-  //     const foundPost = posts.find((p) => p.id === postId);
-  //     setPost(foundPost || null);
-  //   }
-  // }, [id, posts]);
+  useEffect(() => {
+    if (id) {
+      const postId = Number(id);
+      const foundPost = posts.find((p) => p.id === postId);
+      setPost(foundPost || null);
+    }
+  }, [id, posts]);
 
   if (!post) {
     return <div>Post not found.</div>;
